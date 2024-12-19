@@ -1,0 +1,14 @@
+.video{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 10px;
+
+}
+
+video{
+    max-width: 1040px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #bbb;
+}
