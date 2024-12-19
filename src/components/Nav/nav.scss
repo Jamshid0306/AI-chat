@@ -1,0 +1,39 @@
+.nav-container{
+    max-width: 1180px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 40px;
+    background: #e9e9e95c;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 25px;
+    border-radius: 20px;
+    & ul{
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        & li a{
+            color: #000;
+            font-size: 16px;
+        }
+    }
+}
+
+button, .logo{
+    cursor: pointer;
+}
+
+button{
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 140px;
+    justify-content: center;
+    gap: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    outline: none;
+}
