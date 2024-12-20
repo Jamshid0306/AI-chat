@@ -1,0 +1,78 @@
+.footer {
+  &-container {
+    max-width: 1040px;
+    padding: 0 10px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  &-blocks {
+    padding: 50px 0 0 0;
+  }
+  &-cards {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+  }
+  & .logo {
+    font-size: 30px;
+    font-weight: bold;
+  }
+  & button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    outline: none;
+    width: 192px;
+    height: 44px;
+    padding: 0 1.5rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: -0.01562em;
+    transition: all 0.2s ease-out;
+    background: rgb(0, 2, 45);
+    border: none;
+  }
+  & .card1 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  & .icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  & .card2 {
+    display: flex;
+    gap: 40px;
+    & ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      & p {
+        margin-bottom: 1.1rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      & a {
+        display: inline-flex;
+        cursor: pointer;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.25rem;
+        font-size: 0.9375rem;
+        line-height: 1.375;
+        font-weight: 500;
+        color: rgb(18, 54, 106);
+      }
+    }
+  }
+  &-p{
+    padding: 10px 0;
+    color: rgb(18, 54, 106);
+  }
+}

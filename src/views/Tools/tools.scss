@@ -1,0 +1,78 @@
+.tools-carousel {
+  text-align: center;
+  margin-top: 150px;
+  overflow: hidden;
+}
+
+.tools-title {
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01562em;
+  font-size: 2.25rem;
+  padding-bottom: 1.5rem;
+  color: #9333ea;
+  background-image: linear-gradient(to right, #9333ea, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  @media (min-width: 768px) {
+    font-size: 3.75rem;
+  }
+}
+
+.tools-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  letter-spacing: -0.01562em;
+  color: #9ca3af;
+  margin-bottom: 30px;
+  @media (min-width: 768px) {
+    font-size: 1.25rem;
+  }
+}
+
+.carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+
+.carousel-track {
+  display: flex;
+  width: calc(300px * 10);
+  gap: 40px;
+}
+
+.tool-card {
+  flex: 0 0 auto;
+  width: 300px;
+  height: 215px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border: 1px solid #eee;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  & h2 {
+    font-weight: normal;
+  }
+  & p {
+    font-size: 1rem;
+    letter-spacing: -0.01562em;
+    color: #9ca3af;
+  }
+}
+
+.icon-container {
+  margin-bottom: 15px;
+}
+
+.tool-icon {
+  width: 50px;
+  height: 50px;
+}
