@@ -5,7 +5,7 @@ import "./chatgpt.scss";
 
 const userMessage = ref("");
 const chatMessages = ref([]);
-const apiKey = process.env.VUE_APP_API_KEY;
+const apiKey = import.meta.env.VITE_API_KEY;
 
 function sendMessage() {
   if (userMessage.value.trim()) {
@@ -20,7 +20,7 @@ async function getChatGptResponse(userInput) {
     const response = await axios.post(
       "https://api.openai.com/v1/chat/completions",
       {
-        model: "gpt-4o",
+        model: "gpt-3.5-turbo",
         messages: [
           { role: "system", content: "You are a helpful assistant." },
           { role: "user", content: userInput },
@@ -45,7 +45,6 @@ async function getChatGptResponse(userInput) {
   }
 }
 </script>
-
 
 <template>
   <div class="chatall">
