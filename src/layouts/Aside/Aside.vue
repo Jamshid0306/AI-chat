@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import Home from "@/components/icons/Home.vue";
 import Artifact from "@/components/icons/Artifact.vue";
 import Chat from "@/components/icons/Chat.vue";
@@ -12,13 +12,15 @@ import Video from "@/components/icons/Video.vue";
 import Up from "@/components/icons/Up.vue";
 import Down from "@/components/icons/Down.vue";
 import Plus from "@/components/icons/Plus.vue";
+import "./aside.scss";
 
-const selectedItem = ref("Home");
+const selectedItem = ref(localStorage.getItem("selectedPath") || "Home");
 const isCreativeOpen = ref(true);
 const isKnowledgeOpen = ref(true);
 
 function selectItem(item) {
   selectedItem.value = item;
+  localStorage.setItem("selectedPath", item);
 }
 
 function toggleCreative() {
@@ -28,6 +30,13 @@ function toggleCreative() {
 function toggleKnowledge() {
   isKnowledgeOpen.value = !isKnowledgeOpen.value;
 }
+
+onMounted(() => {
+  const storedItem = localStorage.getItem("selectedPath");
+  if (storedItem) {
+    selectedItem.value = storedItem;
+  }
+});
 </script>
 
 <template>
@@ -54,8 +63,8 @@ function toggleKnowledge() {
               Chat
             </div>
             <div>
-              <Plus :size="25"/>
-              <Down :size="25"/>
+              <Plus :size="25" />
+              <Down :size="25" />
             </div>
           </RouterLink>
         </li>
@@ -150,118 +159,3 @@ function toggleKnowledge() {
     </div>
   </aside>
 </template>
-
-<style scoped>
-.sidebar {
-  width: 240px;
-  background-color: #f7f9fc;
-  color: #333;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding: 20px 15px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #007bff;
-  text-align: center;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-nav ul li {
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  border-radius: 10px;
-}
-
-.link {
-  text-decoration: none;
-  font-size: 16px;
-  color: #333;
-  display: flex;
-  align-items: center;
-  padding: 10px 10px;
-  border-radius: 8px;
-  transition: background-color 0.3s, color 0.3s;
-  width: 100%;
-  gap: 10px;
-}
-
-li.active .link {
-  font-weight: bold;
-  background-color: #d7e6fb;
-  color: #0056b3;
-}
-
-.link:hover {
-  background-color: #d7d7d7;
-}
-
-.icon {
-  margin-right: 10px;
-  color: #007bff;
-}
-
-.chatlink{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.chatlink div{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.section-header {
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #555;
-  margin: 20px 0 10px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  font-size: 17px;
-}
-
-.footer {
-  margin-top: auto;
-  text-align: center;
-}
-
-.premium-button {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-bottom: 20px;
-  transition: background-color 0.3s;
-}
-
-.premium-button:hover {
-  background-color: #0056b3;
-}
-
-.user-info p {
-  margin: 0;
-  font-size: 14px;
-  color: #555;
-}
-</style>

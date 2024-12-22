@@ -1,0 +1,48 @@
+.home {
+  & .cardai {
+    padding: 30px 20px;
+    width: 50%;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    & h2{
+        font-size: 40px;
+        font-weight: bolder;
+        width: 50%;
+    }
+    & p{
+        width: 50%;
+        font-size: 20px;
+        line-height: 30px;
+    }
+    & div {
+      display: flex;
+      gap: 20px;
+      & .start,
+      .premium {
+        width: 50%;
+        height: 50px;
+      }
+      & .start button {
+        background: #eee;
+        border: none;
+        color: #000;
+        width: 100%;
+        height: 100%;
+      }
+      & .premium button {
+        color: #007bff;
+        background: #cae4ff;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    }
+  }
+  & .card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+  }
+}
