@@ -1,29 +1,20 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { onMounted } from 'vue';
+import { useSidebarStore } from '@/stores/useSidebarStore';
 import Home from "@/views/DashboardPage/Home/Home.vue";
 import Aside from "@/layouts/Aside/Aside.vue";
 import Chatgpt from "@/views/DashboardPage/Chatgpt/Chatgpt.vue";
 
-const selectedPath = ref(localStorage.getItem('selectedPath') || 'Home');
+const store = useSidebarStore();
 
-onMounted(() => {
-  const storedPath = localStorage.getItem('selectedPath') || 'Home';
-  selectedPath.value = storedPath;
-});
-
-function updatePath(path) {
-  selectedPath.value = path;
-  console.log('Selected path changed to:', path);
-  localStorage.setItem('selectedPath', path);
-}
 </script>
 
 <template>
   <div class="dashboard">
     <Aside />
     <div class="homev">
-      <Home v-if="selectedPath === 'Home'" />
-      <Chatgpt v-if="selectedPath === 'chatgpt'" :key="selectedPath" />
+      <Home v-if="store.selectedItem === 'home'" />
+      <Chatgpt v-if="store.selectedItem === 'chatgpt'" />
     </div>
   </div>
 </template>
@@ -33,9 +24,11 @@ function updatePath(path) {
   display: flex;
   gap: 30px;
   background: #f7f9fc;
+  overflow: hidden;
 }
 
 .homev {
+  margin-left: 290px;
   width: 100%;
   padding: 30px 20px;
 }
