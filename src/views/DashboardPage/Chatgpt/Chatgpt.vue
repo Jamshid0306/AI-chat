@@ -6,14 +6,13 @@ import "./chatgpt.scss";
 const userMessage = ref("");
 const chatMessages = ref([]);
 const apiKey = import.meta.env.VITE_API_KEY;
-console.log("API Key:", apiKey); // API kalitni konsolga chiqarish
 
 function sendMessage() {
   if (userMessage.value.trim()) {
     chatMessages.value.push({ type: "user", message: userMessage.value });
-    const messageToSend = userMessage.value; // Foydalanuvchi xabarini saqlash
+    const messageToSend = userMessage.value;
     userMessage.value = "";
-    getChatGptResponse(messageToSend); // Xabarni yuborish
+    getChatGptResponse(messageToSend);
   }
 }
 
