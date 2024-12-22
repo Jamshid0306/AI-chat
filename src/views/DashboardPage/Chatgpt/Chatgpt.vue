@@ -6,6 +6,7 @@ import "./chatgpt.scss";
 const userMessage = ref("");
 const chatMessages = ref([]);
 const apiKey = import.meta.env.VITE_API_KEY;
+console.log("API Key:", apiKey); 
 
 function sendMessage() {
   if (userMessage.value.trim()) {

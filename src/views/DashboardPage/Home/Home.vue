@@ -6,6 +6,7 @@ const store = useSidebarStore();
 
 import Image from "@/components/icons/Image.vue";
 import RightIcon from "@/components/icons/RightIcon.vue";
+import Robot from "@/components/icons/Robot.vue";
 import chatgpt4oImg from "@/assets/images/dashboard/chatgpt-4o.png";
 import chatgpt4oMiniImg from "@/assets/images/dashboard/chatgpt-4-mini.jpeg";
 import claudeImg from "@/assets/images/claude.png";
@@ -125,12 +126,39 @@ const blocks = [
       <div>
         <Image :size="30" />
         <h6>Image Studio</h6>
-        <p>Text to stunning visuals</p>
-        <button>
-          <span>Create now</span>
-          <RightIcon :size="30" />
-        </button>
       </div>
+      <p>Text to stunning visuals</p>
+      <button>
+        <span>Create now</span>
+        <RightIcon :size="20" />
+      </button>
+    </div>
+    <div class="cardrob card card-bot">
+      <div class="blocks">
+        <div class="gpt">
+          <img src="@/assets/images/dashboard/chatgpt-4-mini.jpeg" alt="">
+          <p>GPT-4</p>
+        </div>
+        <p class="vs">VS</p>
+        <div class="gpt">
+          <img src="@/assets/images/claude.png" alt="">
+          <p>Claude 3</p>
+        </div>
+      </div>
+      <div class="sms">
+        <p>The quantum nature of consciousness arises from microtubules in neurons,...</p>
+        <p>While intiguing, we should be cautious about quantum theories of consciousness...</p>
+      </div>
+      <p class="pod">See how different AI models approach the same question</p>
+      <div>
+        <Robot :size="30" />
+        <h6>Compare AI Models</h6>
+      </div>
+      <p>See how different AIs think</p>
+      <button>
+        <span>Get started</span>
+        <RightIcon :size="20" />
+      </button>
     </div>
   </section>
 </template>
