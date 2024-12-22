@@ -16,6 +16,14 @@ import mistralImg from "@/assets/images/dashboard/mistral.png";
 import geminiImg from "@/assets/images/gemini.png";
 import groqImg from "@/assets/images/dashboard/groq.png";
 import o1Img from "@/assets/images/dashboard/o1.png";
+import Video from "@/components/icons/Video.vue";
+import File from "@/components/icons/File.vue";
+import Chat from "@/components/icons/Chat.vue";
+import Music from "@/components/icons/Music.vue";
+import Map from "@/components/icons/Map.vue";
+import Youtube from "@/components/icons/Youtube.vue";
+import Internet from "@/components/icons/Internet.vue";
+import PdfIcon from "@/components/icons/PdfIcon.vue";
 
 const blocks = [
   {
@@ -127,7 +135,7 @@ const blocks = [
         <Image :size="30" />
         <h6>Image Studio</h6>
       </div>
-      <p>Text to stunning visuals</p>
+      <p class="podd">Text to stunning visuals</p>
       <button>
         <span>Create now</span>
         <RightIcon :size="20" />
@@ -154,9 +162,69 @@ const blocks = [
         <Robot :size="30" />
         <h6>Compare AI Models</h6>
       </div>
-      <p>See how different AIs think</p>
+      <p class="podd">See how different AIs think</p>
       <button>
         <span>Get started</span>
+        <RightIcon :size="20" />
+      </button>
+    </div>
+    <div class="cardvid card card-bot">
+      <video autoplay loop src="https://cdn.photogenius.ai/video-preview.mp4"></video>
+      <div>
+        <Video :size="30" />
+        <h6>Video Studio</h6>
+      </div>
+      <p class="podd">AI video generation</p>
+      <button>
+        <span>Create now</span>
+        <RightIcon :size="20" />
+      </button>
+    </div>
+    <div class="cardimg card-bot1">
+      <div class="icons">
+        <File :size="20"/>
+        <RightIcon :size="20"/>
+        <Chat :size="20"/>
+      </div>
+      <div>
+        <File :size="30" />
+        <h6>PDF Chat</h6>
+      </div>
+      <p class="podd">Chat with any document</p>
+      <button>
+        <span>Upload PDF</span>
+        <RightIcon :size="20" />
+      </button>
+    </div>
+    <div class="cardimg card-bot1">
+      <div class="text">
+        <p>beats</p>
+        <p>melody</p>
+        <p>track</p>
+      </div>
+      <div>
+        <Music :size="30" />
+        <h6>Tune Studio</h6>
+      </div>
+      <p class="podd">AI music generation</p>
+      <button>
+        <span>Create now</span>
+        <RightIcon :size="20" />
+      </button>
+    </div>
+    <div class="cardimg card-bot1">
+      <div class="icons">
+        <Youtube :size="20"/>
+        <Internet :size="20"/>
+        <PdfIcon :size="20"/>
+      </div>
+      <div>
+        <Map :size="30" />
+        <h6>Mind Maps</h6>
+      </div>
+      <p class="podd">Visual learning assistant</p>
+      <button>
+        <span>Create map</span>
         <RightIcon :size="20" />
       </button>
     </div>
