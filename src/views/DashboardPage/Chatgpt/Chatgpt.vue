@@ -5,8 +5,7 @@ import "./chatgpt.scss";
 
 const userMessage = ref("");
 const chatMessages = ref([]);
-const apiKey =
-  "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";
+const apiKey = process.env.VUE_APP_API_KEY;
 
 function sendMessage() {
   if (userMessage.value.trim()) {
@@ -46,6 +45,7 @@ async function getChatGptResponse(userInput) {
   }
 }
 </script>
+
 
 <template>
   <div class="chatall">
