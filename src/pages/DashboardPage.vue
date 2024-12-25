@@ -14,7 +14,7 @@ const store = useSidebarStore();
     <Aside />
     <div class="homev">
       <Home v-if="store.selectedItem === 'home'" />
-      <Chatgpt v-if="store.selectedItem === 'chatgpt'" />
+      <Chatgpt v-if="store.selectedItem === 'chatgpt' || store.selectedItem === 'chatgptimage' || store.selectedItem === 'chatgptmusic' || store.selectedItem === 'chatgptvideo'" />
     </div>
   </div>
 </template>

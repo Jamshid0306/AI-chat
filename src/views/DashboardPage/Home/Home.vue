@@ -1,21 +1,6 @@
 <script setup>
-import { useSidebarStore } from "@/stores/useSidebarStore";
-import "./home.scss";
-
-const store = useSidebarStore();
-
+import { useBlockStore } from "@/stores/useBlockStore";
 import Image from "@/components/icons/Image.vue";
-import RightIcon from "@/components/icons/RightIcon.vue";
-import Robot from "@/components/icons/Robot.vue";
-import chatgpt4oImg from "@/assets/images/dashboard/chatgpt-4o.png";
-import chatgpt4oMiniImg from "@/assets/images/dashboard/chatgpt-4-mini.jpeg";
-import claudeImg from "@/assets/images/claude.png";
-import liamaImg from "@/assets/images/dashboard/liama.png";
-import perplexityAiImg from "@/assets/images/dashboard/perplexity-ai.png";
-import mistralImg from "@/assets/images/dashboard/mistral.png";
-import geminiImg from "@/assets/images/gemini.png";
-import groqImg from "@/assets/images/dashboard/groq.png";
-import o1Img from "@/assets/images/dashboard/o1.png";
 import Video from "@/components/icons/Video.vue";
 import File from "@/components/icons/File.vue";
 import Chat from "@/components/icons/Chat.vue";
@@ -24,64 +9,12 @@ import Map from "@/components/icons/Map.vue";
 import Youtube from "@/components/icons/Youtube.vue";
 import Internet from "@/components/icons/Internet.vue";
 import PdfIcon from "@/components/icons/PdfIcon.vue";
-
-const blocks = [
-  {
-    img: chatgpt4oImg,
-    title: "ChatGPT-4o",
-    description: "Best for creative writing and coding",
-  },
-  {
-    img: chatgpt4oMiniImg,
-    title: "ChatGPT-4o Mini",
-    description: "Faster responses for quick tasks",
-  },
-  {
-    img: claudeImg,
-    title: "Claude 3 Opus",
-    description: "Exceptional at analysis and research",
-  },
-  {
-    img: claudeImg,
-    title: "Claude 3.5 Sonnet",
-    description: "Great balance of speed and intelligence",
-  },
-  {
-    img: liamaImg,
-    title: "Llama 3",
-    description: "Open source, runs on your device",
-  },
-  {
-    img: liamaImg,
-    title: "Llama 3.1 (Pro)",
-    description: "Enhanced version with better accuracy",
-  },
-  {
-    img: perplexityAiImg,
-    title: "Perplexity AI",
-    description: "Real-time info and web search",
-  },
-  {
-    img: mistralImg,
-    title: "Mistral Large",
-    description: "Fast and reliable responses",
-  },
-  {
-    img: geminiImg,
-    title: "Gemini 1.5 Pro",
-    description: "Excellent at visual understanding",
-  },
-  {
-    img: groqImg,
-    title: "Groq",
-    description: "Lightning-fast processing speed",
-  },
-  {
-    img: o1Img,
-    title: "O1",
-    description: "Optimized for business tasks",
-  },
-];
+import RightIcon from "@/components/icons/RightIcon.vue";
+import Robot from "@/components/icons/Robot.vue";
+import "./home.scss"
+import { useSidebarStore } from "@/stores/useSidebarStore";
+const store = useSidebarStore();
+const blockStore = useBlockStore();
 </script>
 
 <template>
@@ -109,17 +42,8 @@ const blocks = [
       <div class="blocks">
         <div
           class="block"
-          v-for="(item, index) in blocks"
+          v-for="(item, index) in blockStore.blocks"
           :key="'original-' + index"
-        >
-          <img :src="item.img" :alt="item.title" />
-          <h5>{{ item.title }}</h5>
-          <p>{{ item.description }}</p>
-        </div>
-        <div
-          class="block"
-          v-for="(item, index) in blocks"
-          :key="'duplicate-' + index"
         >
           <img :src="item.img" :alt="item.title" />
           <h5>{{ item.title }}</h5>
@@ -136,7 +60,7 @@ const blocks = [
         <h6>Image Studio</h6>
       </div>
       <p class="podd">Text to stunning visuals</p>
-      <button>
+      <button @click="store.selectedItem = 'chatgptimage'">
         <span>Create now</span>
         <RightIcon :size="20" />
       </button>
@@ -175,7 +99,7 @@ const blocks = [
         <h6>Video Studio</h6>
       </div>
       <p class="podd">AI video generation</p>
-      <button>
+      <button @click="store.selectedItem = 'chatgptvideo'">
         <span>Create now</span>
         <RightIcon :size="20" />
       </button>
