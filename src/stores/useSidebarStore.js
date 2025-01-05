@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { onMounted } from 'vue';
 
 export const useSidebarStore = defineStore('sidebar', {
   state: () => ({
@@ -46,5 +47,8 @@ export const useSidebarStore = defineStore('sidebar', {
   persist: true,
 });
 
-const sidebarStore = useSidebarStore();
-sidebarStore.loadStateFromLocalStorage();
+// Sahifa yuklanganda localStorage dan holatni yuklash
+onMounted(() => {
+  const sidebarStore = useSidebarStore();
+  sidebarStore.loadStateFromLocalStorage();
+});

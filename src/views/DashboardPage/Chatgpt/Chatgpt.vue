@@ -12,9 +12,11 @@ const chatMessages = ref({
   chatgptimage: [],
   chatgptvideo: [],
   chatgptmusic: [],
+  claude: []
 });
 const isLoading = ref(false);
-const apiKey = import.meta.env.VITE_API_KEY;
+const openAiKey = import.meta.env.VITE_API_KEY;
+const claudeKey = import.meta.env.VITE_CLAUDE_API_KEY;
 
 function getCurrentTime() {
   const now = new Date();
@@ -24,11 +26,18 @@ function getCurrentTime() {
 function sendMessage() {
   if (userMessage.value.trim()) {
     const selectedChat = store.selectedItem;
+    
+    // Initialize the array if it doesn't exist
+    if (!chatMessages.value[selectedChat]) {
+      chatMessages.value[selectedChat] = [];
+    }
+
     chatMessages.value[selectedChat].push({
       type: "user",
       message: userMessage.value,
-      time: getCurrentTime(),
+      time: getCurrentTime()
     });
+    
     const messageToSend = userMessage.value;
     userMessage.value = "";
     isLoading.value = true;
@@ -39,12 +48,15 @@ function sendMessage() {
       generateVideo(messageToSend);
     } else if (selectedChat === "chatgptmusic") {
       generateMusic(messageToSend);
+    } else if (selectedChat === "claude") {
+      getClaudeResponse(messageToSend);
     } else {
       getChatGptResponse(messageToSend);
     }
     saveChatToLocalStorage();
   }
 }
+
 
 async function getChatGptResponse(userInput) {
   try {
@@ -54,28 +66,63 @@ async function getChatGptResponse(userInput) {
         model: "gpt-3.5-turbo",
         messages: [
           { role: "system", content: "You are a helpful assistant." },
-          { role: "user", content: userInput },
-        ],
+          { role: "user", content: userInput }
+        ]
       },
       {
         headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${openAiKey}`,
+          "Content-Type": "application/json"
+        }
       }
     );
     const botMessage = response.data.choices[0].message.content;
     chatMessages.value[store.selectedItem].push({
       type: "bot",
       message: botMessage,
-      time: getCurrentTime(),
+      time: getCurrentTime()
     });
     saveChatToLocalStorage();
   } catch {
     chatMessages.value[store.selectedItem].push({
       type: "bot",
       message: "Sorry, something went wrong.",
-      time: getCurrentTime(),
+      time: getCurrentTime()
+    });
+  } finally {
+    isLoading.value = false;
+  }
+}
+
+async function getClaudeResponse(userInput) {
+  try {
+    const response = await axios.post(
+      "https://api.anthropic.com/v1/complete",
+      {
+        prompt: `You are an AI assistant. Respond to the following:\n\n${userInput}`,
+        max_tokens: 300,
+        model: "claude-2",
+        temperature: 0.7
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${claudeKey}`,
+          "Content-Type": "application/json"
+        }
+      }
+    );
+    const botMessage = response.data.completion;
+    chatMessages.value[store.selectedItem].push({
+      type: "bot",
+      message: botMessage,
+      time: getCurrentTime()
+    });
+    saveChatToLocalStorage();
+  } catch {
+    chatMessages.value[store.selectedItem].push({
+      type: "bot",
+      message: "Sorry, something went wrong.",
+      time: getCurrentTime()
     });
   } finally {
     isLoading.value = false;
@@ -89,13 +136,13 @@ async function generateImage(prompt) {
       {
         prompt,
         n: 1,
-        size: "512x512",
+        size: "512x512"
       },
       {
         headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${openAiKey}`,
+          "Content-Type": "application/json"
+        }
       }
     );
     const imageUrl = response.data.data[0].url;
@@ -103,14 +150,14 @@ async function generateImage(prompt) {
       type: "bot",
       message: `Generated image:`,
       image: imageUrl,
-      time: getCurrentTime(),
+      time: getCurrentTime()
     });
     saveChatToLocalStorage();
   } catch {
     chatMessages.value[store.selectedItem].push({
       type: "bot",
       message: "Image generation failed.",
-      time: getCurrentTime(),
+      time: getCurrentTime()
     });
   } finally {
     isLoading.value = false;
@@ -121,7 +168,7 @@ async function generateVideo(prompt) {
   chatMessages.value[store.selectedItem].push({
     type: "bot",
     message: "Video generation is not yet implemented.",
-    time: getCurrentTime(),
+    time: getCurrentTime()
   });
   saveChatToLocalStorage();
   isLoading.value = false;
@@ -131,7 +178,7 @@ async function generateMusic(prompt) {
   chatMessages.value[store.selectedItem].push({
     type: "bot",
     message: "Music generation is not yet implemented.",
-    time: getCurrentTime(),
+    time: getCurrentTime()
   });
   saveChatToLocalStorage();
   isLoading.value = false;
@@ -183,6 +230,35 @@ onMounted(() => {
               <span class="time">{{ msg.time }}</span>
               <p v-if="!msg.image">{{ msg.message }}</p>
               <img v-if="msg.image" :src="msg.image" alt="Generated image" />
+            </div>
+          </div>
+          <div v-if="isLoading" class="loading-animation"></div>
+        </div>
+        <div class="chat-input">
+          <input
+            v-model="userMessage"
+            type="text"
+            placeholder="Type your message..."
+            @keyup.enter="sendMessage"
+          />
+          <button @click="sendMessage">Send</button>
+        </div>
+      </div>
+    </div>
+    <div v-if="store.selectedItem === 'claude'" class="chatall">
+      <div class="chat-container">
+        <div class="chat-header">
+          <h3>Claude</h3>
+        </div>
+        <div class="chat-body">
+          <div
+            class="message-container"
+            v-for="(msg, index) in chatMessages.claude"
+            :key="index"
+          >
+            <div :class="['message', msg.type]">
+              <span class="time">{{ msg.time }}</span>
+              <p>{{ msg.message }}</p>
             </div>
           </div>
           <div v-if="isLoading" class="loading-animation"></div>
@@ -304,53 +380,6 @@ onMounted(() => {
         </div>
       </div>
     </div>
+    
   </section>
 </template>
-
-<style>
-.loading-animation {
-  display: block;
-  margin: 1rem auto;
-  height: 20px;
-  width: 20px;
-  border: 4px solid #ddd;
-  border-top-color: #3b82f6;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.message {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-  animation: slideIn 0.5s ease-out;
-}
-
-.time {
-  font-size: 0.8rem;
-  color: #888;
-  margin-bottom: 0.5rem;
-}
-
-.message-container {
-  display: flex;
-  flex-direction: column;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-</style>

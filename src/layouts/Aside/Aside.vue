@@ -22,17 +22,22 @@ const store = useSidebarStore();
 const isModalOpen = ref(false);
 
 function selectItem(item) {
-  store.selectItem(item);
+  store.selectedItem(item);
 }
 function toggleBlockSelection(blockId) {
   const block = blockStore.blocks.find((b) => b.id === blockId);
-  if (block?.title === "ChatGPT-4o" || block?.title === "ChatGPT-4o Mini") {
-    store.selectItem("chatgpt");
+  if (block?.title === "ChatGPT-4o" || block?.title === "ChatGPT-4omini") {
+    store.selectedItem = "chatgpt"; 
+  }if(block?.title === "Claude") {
+    store.selectedItem = "claude";
   }
+  
 
-
-  isModalOpen.value = false
+  isModalOpen.value = false;
   blockStore.toggleSelection(blockId);
+}
+function toggleSidebar() {
+  store.isSidebarOpen = !store.isSidebarOpen;
 }
 
 function toggleCreative() {
@@ -46,11 +51,20 @@ function toggleKnowledge() {
 function toggleChat() {
   isModalOpen.value = !isModalOpen.value;
 }
+
+function togglechat(){
+  store.isChatOpen = !store.isChatOpen
+}
 </script>
 
 <template>
   <aside class="sidebar">
     <div class="logo">ninjachat</div>
+    <div class="hamburger" @click="toggleSidebar">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <nav>
       <ul>
         <li
@@ -63,12 +77,12 @@ function toggleChat() {
           </RouterLink>
         </li>
 
-        <li class="section-header" @click="toggleChat">
+        <li class="section-header" >
           <RouterLink to="/dashboard" class="chatlink">
             <div>Chat</div>
             <div>
-              <Plus :size="25" />
-              <component :is="store.isChatOpen ? Up : Down" :size="25" />
+              <Plus :size="25" @click="toggleChat" />
+              <component :is="store.isChatOpen ? Up : Down" :size="25"  @click="togglechat" />
             </div>
           </RouterLink>
         </li>
@@ -113,17 +127,16 @@ function toggleChat() {
           <ul v-if="store.isCreativeOpen">
             <li
               :class="{ active: store.selectedItem === 'chatgptimage' }"
-              @click="selectItem('chatgptimage')"
+              @click="store.selectedItem = 'chatgptimage'"
             >
               <RouterLink to="/dashboard" class="link">
                 <Image :size="25" />
                 AI Images
               </RouterLink>
-
             </li>
             <li
               :class="{ active: store.selectedItem === 'chatgptmusic' }"
-              @click="selectItem('chatgptmusic')"
+              @click="store.selectedItem = 'chatgptmusic'"
             >
               <RouterLink to="/dashboard" class="link">
                 <Music :size="25" />
@@ -132,7 +145,7 @@ function toggleChat() {
             </li>
             <li
               :class="{ active: store.selectedItem === 'chatgptvideo' }"
-              @click="selectItem('chatgptvideo')"
+              @click="store.selectedItem = 'chatgptvideo'"
             >
               <RouterLink to="/dashboard" class="link">
                 <Video :size="25" />
@@ -221,4 +234,3 @@ function toggleChat() {
     </div>
   </div>
 </template>
-

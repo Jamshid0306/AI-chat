@@ -13,8 +13,8 @@ export const useBlockStore = defineStore('blocks', {
   state: () => ({
     blocks: [
       { id: 1, img: chatgpt4o, title: 'ChatGPT-4o', description: 'Best for creative writing and coding', selected: false },
-      { id: 2, img: chatgpt4mini, title: 'ChatGPT-4o Mini', description: 'Faster responses for quick tasks', selected: false },
-      { id: 3, img: claude, title: 'Claude 3 Opus', description: 'Exceptional at analysis and research', selected: false },
+      { id: 2, img: chatgpt4mini, title: 'ChatGPT-4omini', description: 'Faster responses for quick tasks', selected: false },
+      { id: 3, img: claude, title: 'Claude', description: 'Exceptional at analysis and research', selected: false },
       { id: 4, img: liama, title: 'Llama 3', description: 'Open source, runs on your device', selected: false },
       { id: 5, img: perplexityAi, title: 'Perplexity AI', description: 'Real-time info and web search', selected: false },
       { id: 6, img: mistral, title: 'Mistral Large', description: 'Fast and reliable responses', selected: false },

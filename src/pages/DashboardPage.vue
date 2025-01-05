@@ -1,5 +1,4 @@
 <script setup>
-import { onMounted } from 'vue';
 import { useSidebarStore } from '@/stores/useSidebarStore';
 import Home from "@/views/DashboardPage/Home/Home.vue";
 import Aside from "@/layouts/Aside/Aside.vue";
@@ -14,7 +13,7 @@ const store = useSidebarStore();
     <Aside />
     <div class="homev">
       <Home v-if="store.selectedItem === 'home'" />
-      <Chatgpt v-if="store.selectedItem === 'chatgpt' || store.selectedItem === 'chatgptimage' || store.selectedItem === 'chatgptmusic' || store.selectedItem === 'chatgptvideo'" />
+      <Chatgpt v-if="store.selectedItem === 'chatgpt' || store.selectedItem === 'chatgptimage' || store.selectedItem === 'chatgptmusic' || store.selectedItem === 'chatgptvideo' || store.selectedItem === 'claude'" />
     </div>
   </div>
 </template>
