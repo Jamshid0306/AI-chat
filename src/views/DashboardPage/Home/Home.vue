@@ -37,20 +37,21 @@ const blockStore = useBlockStore();
       </div>
     </div>
     <div class="cardas card">
-      <h3>Smart AI Assistants</h3>
-      <p>Chat with different AI personalities for any task</p>
-      <div class="blocks">
-        <div
-          class="block"
-          v-for="(item, index) in blockStore.blocks"
-          :key="'original-' + index"
-        >
-          <img :src="item.img" :alt="item.title" />
-          <h5>{{ item.title }}</h5>
-          <p>{{ item.description }}</p>
-        </div>
-      </div>
+  <h3>Smart AI Assistants</h3>
+  <p>Chat with different AI personalities for any task</p>
+  <div class="blocks">
+    <div
+      class="block"
+      v-for="(item, index) in blockStore.blocks"
+      :key="'original-' + index"
+      @click="store.selectedItem = item.klich"
+    >
+      <img :src="item.img" :alt="item.title" />
+      <h5>{{ item.title }}</h5>
+      <p>{{ item.description }}</p>
     </div>
+  </div>
+</div>
   </section>
   <section class="home-bot">
     <div class="cardimg card card-bot">
@@ -131,7 +132,7 @@ const blockStore = useBlockStore();
         <h6>Tune Studio</h6>
       </div>
       <p class="podd">AI music generation</p>
-      <button>
+      <button @click="store.selectedItem = 'chatgptmusic'">
         <span>Create now</span>
         <RightIcon :size="20" />
       </button>

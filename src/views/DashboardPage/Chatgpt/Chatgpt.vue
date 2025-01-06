@@ -12,11 +12,11 @@ const chatMessages = ref({
   chatgptimage: [],
   chatgptvideo: [],
   chatgptmusic: [],
-  claude: []
+  liama: []
 });
 const isLoading = ref(false);
 const openAiKey = import.meta.env.VITE_API_KEY;
-const claudeKey = import.meta.env.VITE_CLAUDE_API_KEY;
+const liamaKey = import.meta.env.VITE_LIAMA_API_KEY;
 
 function getCurrentTime() {
   const now = new Date();
@@ -26,18 +26,14 @@ function getCurrentTime() {
 function sendMessage() {
   if (userMessage.value.trim()) {
     const selectedChat = store.selectedItem;
-    
-    // Initialize the array if it doesn't exist
     if (!chatMessages.value[selectedChat]) {
       chatMessages.value[selectedChat] = [];
     }
-
     chatMessages.value[selectedChat].push({
       type: "user",
       message: userMessage.value,
       time: getCurrentTime()
     });
-    
     const messageToSend = userMessage.value;
     userMessage.value = "";
     isLoading.value = true;
@@ -48,15 +44,14 @@ function sendMessage() {
       generateVideo(messageToSend);
     } else if (selectedChat === "chatgptmusic") {
       generateMusic(messageToSend);
-    } else if (selectedChat === "claude") {
-      getClaudeResponse(messageToSend);
+    } else if (selectedChat === "liama") {
+      getLiamaResponse(messageToSend);
     } else {
       getChatGptResponse(messageToSend);
     }
     saveChatToLocalStorage();
   }
 }
-
 
 async function getChatGptResponse(userInput) {
   try {
@@ -94,24 +89,24 @@ async function getChatGptResponse(userInput) {
   }
 }
 
-async function getClaudeResponse(userInput) {
+async function getLiamaResponse(userInput) {
   try {
     const response = await axios.post(
-      "https://api.anthropic.com/v1/complete",
+      "https://meta-llama-2-ai.p.rapidapi.com/",
       {
-        prompt: `You are an AI assistant. Respond to the following:\n\n${userInput}`,
-        max_tokens: 300,
-        model: "claude-2",
-        temperature: 0.7
+        model: "meta-llama/Llama-2-70b-chat-hf",
+        messages: [{ role: "user", content: userInput }]
       },
       {
         headers: {
-          Authorization: `Bearer ${claudeKey}`,
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "x-rapidapi-host": "meta-llama-2-ai.p.rapidapi.com",
+          "x-rapidapi-key": liamaKey
         }
       }
     );
-    const botMessage = response.data.completion;
+    console.log("Liama API Response:", response.data);
+    const botMessage = response.data.choices[0].message.content;
     chatMessages.value[store.selectedItem].push({
       type: "bot",
       message: botMessage,
@@ -213,6 +208,7 @@ onMounted(() => {
 });
 </script>
 
+
 <template>
   <section>
     <div v-if="store.selectedItem === 'chatgpt'" class="chatall">
@@ -245,10 +241,10 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <div v-if="store.selectedItem === 'claude'" class="chatall">
+    <div v-if="store.selectedItem === 'liama'" class="chatall">
       <div class="chat-container">
         <div class="chat-header">
-          <h3>Claude</h3>
+          <h3>Liama</h3>
         </div>
         <div class="chat-body">
           <div
