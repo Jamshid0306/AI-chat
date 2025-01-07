@@ -11,7 +11,7 @@ import Internet from "@/components/icons/Internet.vue";
 import PdfIcon from "@/components/icons/PdfIcon.vue";
 import RightIcon from "@/components/icons/RightIcon.vue";
 import Robot from "@/components/icons/Robot.vue";
-import "./home.scss"
+import "./home.scss";
 import { useSidebarStore } from "@/stores/useSidebarStore";
 const store = useSidebarStore();
 const blockStore = useBlockStore();
@@ -37,21 +37,35 @@ const blockStore = useBlockStore();
       </div>
     </div>
     <div class="cardas card">
-  <h3>Smart AI Assistants</h3>
-  <p>Chat with different AI personalities for any task</p>
-  <div class="blocks">
-    <div
-      class="block"
-      v-for="(item, index) in blockStore.blocks"
-      :key="'original-' + index"
-      @click="store.selectedItem = item.klich"
-    >
-      <img :src="item.img" :alt="item.title" />
-      <h5>{{ item.title }}</h5>
-      <p>{{ item.description }}</p>
+      <h3>Smart AI Assistants</h3>
+      <p>Chat with different AI personalities for any task</p>
+      <div class="cardsw">
+        <div class="blocks">
+          <div
+            class="block"
+            v-for="(item, index) in blockStore.blocks"
+            :key="'original-' + index"
+            @click="store.selectedItem = item.klich"
+          >
+            <img :src="item.img" :alt="item.title" />
+            <h5>{{ item.title }}</h5>
+            <p>{{ item.description }}</p>
+          </div>
+        </div>
+        <div class="blocks">
+          <div
+            class="block"
+            v-for="(item, index) in blockStore.blocks"
+            :key="'original-' + index"
+            @click="store.selectedItem = item.klich"
+          >
+            <img :src="item.img" :alt="item.title" />
+            <h5>{{ item.title }}</h5>
+            <p>{{ item.description }}</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
   </section>
   <section class="home-bot">
     <div class="cardimg card card-bot">
@@ -69,18 +83,24 @@ const blockStore = useBlockStore();
     <div class="cardrob card card-bot">
       <div class="blocks">
         <div class="gpt">
-          <img src="@/assets/images/dashboard/chatgpt-4-mini.jpeg" alt="">
+          <img src="@/assets/images/dashboard/chatgpt-4-mini.jpeg" alt="" />
           <p>GPT-4</p>
         </div>
         <p class="vs">VS</p>
         <div class="gpt">
-          <img src="@/assets/images/claude.png" alt="">
+          <img src="@/assets/images/claude.png" alt="" />
           <p>Claude 3</p>
         </div>
       </div>
       <div class="sms">
-        <p>The quantum nature of consciousness arises from microtubules in neurons,...</p>
-        <p>While intiguing, we should be cautious about quantum theories of consciousness...</p>
+        <p>
+          The quantum nature of consciousness arises from microtubules in
+          neurons,...
+        </p>
+        <p>
+          While intiguing, we should be cautious about quantum theories of
+          consciousness...
+        </p>
       </div>
       <p class="pod">See how different AI models approach the same question</p>
       <div>
@@ -94,7 +114,11 @@ const blockStore = useBlockStore();
       </button>
     </div>
     <div class="cardvid card card-bot">
-      <video autoplay loop src="https://cdn.photogenius.ai/video-preview.mp4"></video>
+      <video
+        autoplay
+        loop
+        src="https://cdn.photogenius.ai/video-preview.mp4"
+      ></video>
       <div>
         <Video :size="30" />
         <h6>Video Studio</h6>
@@ -107,9 +131,9 @@ const blockStore = useBlockStore();
     </div>
     <div class="cardimg card-bot1">
       <div class="icons">
-        <File :size="20"/>
-        <RightIcon :size="20"/>
-        <Chat :size="20"/>
+        <File :size="20" />
+        <RightIcon :size="20" />
+        <Chat :size="20" />
       </div>
       <div>
         <File :size="30" />
@@ -139,9 +163,9 @@ const blockStore = useBlockStore();
     </div>
     <div class="cardimg card-bot1">
       <div class="icons">
-        <Youtube :size="20"/>
-        <Internet :size="20"/>
-        <PdfIcon :size="20"/>
+        <Youtube :size="20" />
+        <Internet :size="20" />
+        <PdfIcon :size="20" />
       </div>
       <div>
         <Map :size="30" />

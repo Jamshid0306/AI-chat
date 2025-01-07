@@ -39,7 +39,7 @@ const store = useSidebarStore();
   width: 100%;
   padding: 30px 20px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1124px) {
   .dashboard {
     flex-direction: column;
   }

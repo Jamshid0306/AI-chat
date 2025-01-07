@@ -1,8 +1,24 @@
 .home {
   display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
+  gap: 20px;
+  @media screen and (max-width: 1124px) {
+    justify-content: space-between;
+  }
+  @media screen and (max-width: 610px) {
+    flex-direction: column;
+  }
   & .cardai {
+    @media screen and (max-width: 1124px) {
+      width: 49%;
+    }
+    @media screen and (max-width: 1555px) {
+      & h2 {
+        font-size: 30px;
+      }
+    }
+    @media screen and (max-width: 610px) {
+      width: 100%;
+    }
     padding: 30px 20px;
     width: 40%;
     height: 40vh;
@@ -10,6 +26,19 @@
     flex-direction: column;
     justify-content: space-between;
     & h2 {
+      @media screen and (max-width: 1555px) {
+        font-size: 35px;
+        line-height: 35px;
+        padding-bottom: 10px;
+        width: 80%;
+      }
+      @media screen and (max-width: 900px) {
+        width: 100%;
+        padding-bottom: 0;
+      }
+      @media screen and (max-width: 400px) {
+        font-size: 26px;
+      }
       font-size: 40px;
       font-weight: bolder;
       width: 50%;
@@ -18,12 +47,32 @@
       width: 50%;
       font-size: 20px;
       line-height: 30px;
+      @media screen and (max-width: 1555px) {
+        padding-bottom: 10px;
+        width: 80%;
+      }
+      @media screen and (max-width: 900px) {
+        width: 100%;
+        padding-bottom: 0;
+      }
+      @media screen and (max-width: 768px) {
+        line-height: 25px;
+      }
+      @media screen and (max-width: 400px) {
+        font-size: 18px;
+      }
     }
     & div {
       display: flex;
       gap: 20px;
+      @media screen and (max-width: 400px) {
+        flex-direction: column;
+      }
       & .start,
       .premium {
+        @media screen and (max-width: 400px) {
+          width: 100%;
+        }
         width: 50%;
         height: 50px;
       }
@@ -49,16 +98,52 @@
     border-radius: 10px;
   }
   & .cardas {
+    @media screen and (max-width: 1124px) {
+      width: 49%;
+    }
+    @media screen and (max-width: 610px) {
+      width: 100%;
+    }
     width: 42%;
     height: 40vh;
     overflow: hidden;
     padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     & h3 {
+      @media screen and (max-width: 1555px) {
+        font-size: 35px;
+        line-height: 35px;
+        padding-bottom: 10px;
+        width: 80%;
+      }
+      @media screen and (max-width: 900px) {
+        width: 100%;
+        padding-bottom: 0;
+      }
+      @media screen and (max-width: 400px) {
+        font-size: 26px;
+      }
       text-align: center;
       font-size: 30px;
       padding-bottom: 8px;
     }
     & p {
+      @media screen and (max-width: 1555px) {
+        padding-bottom: 10px;
+        width: 80%;
+      }
+      @media screen and (max-width: 900px) {
+        width: 100%;
+        padding-bottom: 0;
+      }
+      @media screen and (max-width: 768px) {
+        line-height: 25px;
+      }
+      @media screen and (max-width: 400px) {
+        font-size: 18px;
+      }
       font-size: 20px;
       text-align: center;
       padding-bottom: 30px;
@@ -70,6 +155,12 @@
       padding-left: 0;
       margin-left: 0;
       white-space: nowrap;
+      @media screen and (max-width: 1124px) {
+        animation: slide 15s linear infinite;
+      }
+    }
+    & .cardsw {
+      display: flex;
     }
     & .block {
       width: 318px;
@@ -130,6 +221,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     & img {
       width: 100%;
       height: 160px;
@@ -153,6 +245,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     & .blocks {
       display: flex;
       justify-content: center;
@@ -222,11 +315,11 @@
     width: 100%;
     font-weight: bolder;
   }
-  & .text{
+  & .text {
     display: flex;
     align-items: center;
     gap: 10px;
-    & p{
+    & p {
       font-size: 13px;
       font-weight: bold;
       color: rgb(72, 0, 255);
