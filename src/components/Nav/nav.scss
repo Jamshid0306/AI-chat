@@ -1,50 +1,55 @@
-.nav-container{
-    max-width: 1180px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px 40px;
-    
+.nav-container {
+  max-width: 1180px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 25px;
+  border-radius: 20px;
+  @media screen and (max-width: 666px) {
+    flex-direction: column;
+    padding: 10px 0;
+    margin-top: 10px;
+  }
+  & ul {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-top: 25px;
-    border-radius: 20px;
-    & ul{
-        display: flex;
-        align-items: center;
-        gap: 30px;
-        & li a{
-            color: #000;
-            font-size: 16px;
-        }
+    gap: 30px;
+    & li a {
+      color: #000;
+      font-size: 16px;
     }
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: 50;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 50;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   background-color: rgba(229, 231, 235, 0.2);
   backdrop-filter: blur(10px);
 }
 
-button, .logo{
-    cursor: pointer;
+button,
+.logo {
+  cursor: pointer;
 }
 
-button{
-    background: #000;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    height: 40px;
-    width: 140px;
-    justify-content: center;
-    gap: 5px;
-    font-size: 16px;
-    border-radius: 5px;
-    outline: none;
+button {
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 140px;
+  justify-content: center;
+  gap: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  outline: none;
 }
