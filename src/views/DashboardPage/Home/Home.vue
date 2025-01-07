@@ -117,11 +117,11 @@ const blockStore = useBlockStore();
         </button>
       </div>
       <div class="cardvid card card-bot cardbot">
-        <video
+        <!-- <video
           autoplay
           loop
           src="https://cdn.photogenius.ai/video-preview.mp4"
-        ></video>
+        ></video> -->
         <div>
           <Video :size="30" />
           <h6>Video Studio</h6>
