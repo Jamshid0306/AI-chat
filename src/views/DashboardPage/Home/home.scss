@@ -98,6 +98,9 @@
     border-radius: 10px;
   }
   & .cardas {
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
     @media screen and (max-width: 1124px) {
       width: 49%;
     }
@@ -161,6 +164,7 @@
     }
     & .cardsw {
       display: flex;
+      gap: 30px;
     }
     & .block {
       width: 318px;
@@ -195,14 +199,42 @@
   }
 }
 
+@media screen and (max-width: 1124px) {
+  .home-bot {
+    width: 100%;
+  }
+}
+
 .home-bot {
+  @media screen and (max-width: 1124px) {
+    width: 100%;
+  }
   width: 83%;
   margin-top: 50px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 30px;
+  & .home-bot-top{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  & .home-bot-bot{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
   & .card-bot {
     transition: 0.4s;
     cursor: pointer;
@@ -211,9 +243,14 @@
     box-shadow: 0px 20px 20px #bbb;
     transform: translateY(-10px);
   }
+  & .cardbot{
+    width: 31%;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+  }
   & .card {
     padding: 20px;
-    width: 32%;
     overflow: hidden;
     height: 320px;
     background: #fff;
@@ -249,14 +286,21 @@
     & .blocks {
       display: flex;
       justify-content: center;
-      margin-bottom: 10px;
+      align-items: start;
       & .vs {
         font-size: 18px;
       }
       & .gpt {
+        display: flex;
+        align-items: start;
         & img {
           width: 30px;
           height: 30px;
+          @media screen and (max-width: 992px) {
+            width: 20px;
+            height: 20px;
+            margin-bottom: 10px;
+          }
         }
         & p {
           font-size: 16px;
@@ -271,6 +315,10 @@
         padding: 10px;
         background-color: #e1e1e1;
         border-radius: 10px;
+        @media screen and (max-width: 992px) {
+          padding: 5px;
+          font-size: 13px;
+        }
       }
     }
     & .pod {
@@ -288,7 +336,6 @@
 .card-bot1 {
   height: 180px;
   padding: 20px;
-  width: 32%;
   overflow: hidden;
   background: #fff;
   border-radius: 10px;
@@ -336,6 +383,7 @@
   font-weight: bold;
   font-size: 15px;
   color: #484848;
+  margin-bottom: 10px;
 }
 
 @keyframes slide {

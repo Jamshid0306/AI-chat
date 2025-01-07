@@ -36,6 +36,9 @@
       border-radius: 0 10px 0 0;
       transform: translateX(-120%);
       margin-top: 0;
+      @media screen and (max-width: 500px) {
+        width: 200px;
+      }
     }
   }
 }
@@ -50,6 +53,7 @@
   width: 270px;
   height: 90%;
   margin-top: 40px;
+ 
 }
 
 .header-side.open{
@@ -180,6 +184,7 @@ li.active .link {
 
 .premium-button {
   display: block;
+  max-width: 200px;
   width: 100%;
   padding: 12px;
   background-color: #007bff;
@@ -191,6 +196,9 @@ li.active .link {
   cursor: pointer;
   margin-bottom: 20px;
   transition: background-color 0.3s;
+  @media screen and (max-width: 500px) {
+    max-width: 150px;
+  }
 }
 
 .premium-button:hover {
@@ -204,11 +212,12 @@ li.active .link {
 }
 
 .modal-overlay {
-  position: fixed;
-  top: 17%;
-  left: 12%;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  z-index: 1111;
 }
 
 .modal-content {
@@ -217,7 +226,18 @@ li.active .link {
   border-radius: 8px;
   width: 300px;
   border: 1px solid #bbb;
+  position: fixed;
+  z-index: 9999999;
+  height: 300px;
+  overflow: auto;
+  top: 170px;
+  left: 100px;
+  @media screen and (max-width: 500px) {
+    padding: 5px;
+    width: 200px;
+  }
 }
+
 
 .blocks-container {
   display: flex;
