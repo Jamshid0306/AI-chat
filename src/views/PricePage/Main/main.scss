@@ -1,0 +1,39 @@
+.header {
+  &-text {
+    color: #fff !important;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(to right, #4c51bf, #3b82f6);
+    padding: 5px 10px;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 14px !important;
+  }
+  &-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: -0.01562em;
+    text-align: center;
+    color: #1a202c;
+    margin-top: 10px;
+
+    @media (min-width: 768px) {
+      font-size: 3rem;
+    }
+  }
+  &-txt {
+    text-align: center;
+    gap: 0.75rem;
+    max-width: 48rem;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+    font-size: 1rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.125rem;
+    }
+  }
+}

@@ -14,11 +14,11 @@ const router = createRouter({
       name: 'dashboard',
       component: () => import('@/pages/DashboardPage.vue'),
     },
-    // {
-    //   path: '/chatgpt',
-    //   name: 'chatgpt',
-    //   component: () => import('@/views/DashboardPage/Chatgpt/Chatgpt.vue'),
-    // },
+    {
+      path: '/pricing',
+      name: 'pricing',
+      component: () => import('@/pages/PricePage.vue'),
+    },
   ],
 })
 

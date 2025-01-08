@@ -7,7 +7,7 @@ import "./nav.scss";
   <nav class="nav">
     <div class="nav-container">
       <ul>
-        <li><RouterLink to="/">Pricing</RouterLink></li>
+        <li><RouterLink to="/pricing">Pricing</RouterLink></li>
         <li><RouterLink to="/">Blog</RouterLink></li>
         <li><RouterLink to="/">Affiliate</RouterLink></li>
       </ul>

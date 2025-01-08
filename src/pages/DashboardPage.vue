@@ -3,7 +3,6 @@ import { useSidebarStore } from "@/stores/useSidebarStore";
 import Home from "@/views/DashboardPage/Home/Home.vue";
 import Aside from "@/layouts/Aside/Aside.vue";
 import Chatgpt from "@/views/DashboardPage/Chatgpt/Chatgpt.vue";
-import "./media.scss";
 
 const store = useSidebarStore();
 </script>
