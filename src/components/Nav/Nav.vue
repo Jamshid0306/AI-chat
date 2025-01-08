@@ -14,7 +14,7 @@ import "./nav.scss";
       <RouterLink to="/" class="logo">
         <h2>ninjachat</h2>
       </RouterLink>
-      <RouterLink to="/dashboard">
+      <RouterLink to="/register">
         <button>
           <h4>Dashboard</h4>
           <RightIcon :size="20" />

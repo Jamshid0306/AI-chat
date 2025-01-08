@@ -23,6 +23,8 @@ const isModalOpen = ref(false);
 const isMenuOpen = ref(false);
 const isSidebarOpen = ref(false);
 
+const name = localStorage.getItem('userName')
+
 function selectItem(item) {
   store.selectedItem(item);
 }
@@ -221,7 +223,7 @@ function togglechat() {
         <button class="premium-button">Get Premium</button>
         <div class="user-info">
           <p>FREE</p>
-          <p>Jamshid Abdukarimov</p>
+          <p>{{ name }}</p>
         </div>
       </footer>
     </div>

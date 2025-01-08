@@ -18,7 +18,7 @@ const store = usePeriodStore();
         </button>
         <button
           class="year"
-          :class="{ selected: store.selectedPeriod === 'year' }"
+          :class="{ selected: store.selectedPeriod === 'yearly' }"
           @click="store.selectedPeriod = 'yearly'"
         >
           Yearly
